@@ -8,9 +8,16 @@
 <script>
 $(document).ready(function(){
       $('#frame').attr('src', 'https://markfontenot.net' + window.location.pathname);
-      setTimeout(function() {$(".noflip").toggleClass("flip")}, 5000)
-      setTimeout(function() {$(".noflip").toggleClass("flip")}, 9000)
-      setTimeout(function() {$(".noflip").toggleClass("permanent")}, 15000)
+      //setTimeout(function() {$(".noflip").toggleClass("flip")}, 5000);
+    //   setTimeout(function() {$(".noflip").toggleClass("flip")}, 9000)
+    var flip = function() {$(".noflip").toggleClass("permanent");}
+    setTimeout(function(){
+        setInterval(flip, 500);
+        setInterval(function(){$("body").toggleClass("red")},500)
+        }, 5000)
+    setTimeout(function() {$("div").toggleClass("flip")}, 5000);
+
+    
 });
 </script>
 <style>
@@ -18,6 +25,7 @@ $(document).ready(function(){
 body {
     margin: 0;
     overflow: hidden;
+    background-color: blue;
 }
 
 @-webkit-keyframes roll {
@@ -37,11 +45,11 @@ body {
 
 .flip {
     -moz-animation-name: roll;
-    -moz-animation-duration: 0.5s;
-    -moz-animation-iteration-count: 1;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: 100;
     -webkit-animation-name: roll;
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-iteration-count: 1;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: 100;
 }
 
 .permanent {
@@ -50,9 +58,10 @@ body {
     -o-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
+    /* height: 50% !important; */
 }
 
-html,body,div,iframe {
+html,body,iframe {
    margin: 0;
    padding: 0;
    height: 100%;
@@ -62,13 +71,20 @@ html,body,div,iframe {
 iframe {
    width: 100%;
    border: 0;
+   background-color: white !important;
 }
+
+.red {
+    background-color: red !important;
+}
+
+
 
 
 
 </style>
 </head>
 <body>
-<iframe src="https://markfontenot.net" class="noflip">
+    <div><iframe src="https://markfontenot.net" class="noflip"></iframe></div>
 </body>
 </html>
